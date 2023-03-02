@@ -1,0 +1,2 @@
+timeout 90s ~/LRFR/bench_ycsb  --id=8 --servers="10.10.10.206:20180;10.10.10.207:20180;10.10.10.209:20180;10.10.10.212:20180;10.10.10.11:20180;10.10.10.12:20180;10.10.10.13:20180;10.10.10.16:20180;10.10.10.17:20180" --protocol=LeFR --partition_num=144 --threads=16 --partitioner=hash3 --read_write_ratio=50 --cross_ratio=50 --zipf=0.70 --coordinator_failure=true --recovery_time=3000 --batch_flush=200 > coor_fault_ycsb_8_thr_16_rw_50_cross_50_zipf_0.70_Silo 2>&1
+sleep 10

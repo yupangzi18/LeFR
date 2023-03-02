@@ -1,0 +1,27 @@
+syntax="proto2";
+package lefr;
+option cc_generic_services = true;
+
+message OpLog {
+    enum Type {
+        READ = 1;
+        WRITE = 2;
+    }
+    required Type type = 1;
+    required int64 tid = 2 [default = 0];
+    required bytes value = 3;
+}
+
+message ReplicationRequest {
+    required int64 tid = 1;
+    repeated OpLog logs = 2;
+}
+
+message ReplicationResponse {
+    required bool success = 1;
+    optional string redirect = 2;
+}
+
+service ReplicationService {
+    rpc init_txn(ReplicationRequest) returns (ReplicationResponse);
+}
